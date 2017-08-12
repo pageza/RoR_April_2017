@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <h1>Secrets</h1>
+  </div>
+  <div>
+    <a href="/logout">Log Out</a>
+  </div>
+</div>
+
+<div>
+  <% @secrets.each do |secret| %>
+  <h4><%= secret.content %></h4>
+  <h5><%= secret.likes.count %></h5>
+  <form action="/likes/<%= secret.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+    <input type="submit" value="Like">
+  </form>
+  <% end %>
+</div>
